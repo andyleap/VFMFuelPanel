@@ -11,6 +11,8 @@
     <TargetFrameworkProfile />
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,13 +37,16 @@
     <RootNamespace>FuelPanel</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\SteamLibrary\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\.steam\steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\.steam\steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\SteamLibrary\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\.steam\steam\SteamApps\common\Kerbal Space Program\KSP_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +58,7 @@
     <Compile Include="MiniJSON.cs" />
     <Compile Include="Pump.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="PumpNetwork.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="Package.proj" />

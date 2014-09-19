@@ -79,9 +79,24 @@ namespace FuelPanel
             Connections[from].Remove(to);
             Connections[to].Remove(from);
             bool connected = WalkGraph(from).Contains(to);
+			if(!connected)
+			{
+				PumpNetwork newNet = new PumpNetwork();
+				newNet.ConnectedVessels = WalkGraph(to).ToList();
+				ConnectedVessels = WalkGraph(from).ToList();
+				ILookup<Vessel, Pump> vp = Pumps.ToLookup(p => p.part.vessel);
+				newNet.Pumps = newNet.ConnectedVessels.SelectMany(v => vp[v]).ToList();
+				Pumps = ConnectedVessels.SelectMany(v => vp[v]).ToList();
+				foreach(var v in Connections.Keys.ToList())
+				{
+					if(!ConnectedVessels.Contains(v))
+					{
+						newNet.Connections.Add(v, Connections[v]);
+						Connections.Remove(v);
+					}
+				}
 
-
-
+			}
         }
 
         public IEnumerable<Vessel> WalkGraph(Vessel start)
